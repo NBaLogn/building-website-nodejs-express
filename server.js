@@ -5,6 +5,9 @@ const app = express();
 
 const port = 3000;
 
+app.set('view engine','ejs')
+app.set('views',path.join(__dirname, './views'))
+
 app.use(express.static(path.join(__dirname, './static/')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './static/index.html'));
@@ -15,5 +18,6 @@ app.get('/speakers', (req, res) => {
 });
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Express server listening on port ${port}!`);
 });
