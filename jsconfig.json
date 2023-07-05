@@ -1,7 +1,5 @@
 {
-    "typeAcquisition": {
-        "include": [
-            "node", "express"
-        ]
-    }
+  "typeAcquisition": {
+    "include": ["node", "express", "prettier", "ejs", "eslint"]
+  }
 }
