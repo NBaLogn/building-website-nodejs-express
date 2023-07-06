@@ -56,7 +56,7 @@ app.use((request, response, next) => {
   return next(createError(404, 'File not found'));
 });
 
-app.use((err, request, response, next) => {
+app.use((err, request, response) => {
   response.locals.message = err.message;
   console.error(err);
   const status = err.status || 500;
