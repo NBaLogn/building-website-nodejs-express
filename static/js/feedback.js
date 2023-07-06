@@ -7,12 +7,12 @@ $(function feedback() {
       const render = [];
       // Reset all status messages
       $('.feedback-status').empty();
-  
+
       // All went well
       if (!data.errors && data.feedback) {
         // The input was valid - reset the form
         $('.feedback-form').trigger('reset');
-  
+
         $.each(data.feedback, function createHtml(key, item) {
           render.push(`
           <div class="feedback-item item-list media-list">
@@ -48,14 +48,14 @@ $(function feedback() {
         );
       }
     }
-  
+
     /**
      * Attaches to the form and sends the data to our REST endpoint
      */
     $('.feedback-form').submit(function submitFeedback(e) {
       // Prevent the default submit form event
       e.preventDefault();
-  
+
       // XHR POST request
       $.post(
         '/feedback/api',
@@ -71,4 +71,3 @@ $(function feedback() {
       );
     });
   });
-  
