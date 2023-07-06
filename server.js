@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const createError = require('http-errors');
+const bodyParser = require('body-parser');
 
 const FeedbackService = require('./services/FeedbackService');
 const SpeakersService = require('./services/SpeakerService');
@@ -23,6 +24,8 @@ app.use(
     keys: ['Ghdur6873997w', 'hhjjdf89s866799'],
   })
 );
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
@@ -59,7 +62,7 @@ app.use((err, request, response, next) => {
   const status = err.status || 500;
   response.locals.status = status;
   response.status(status);
-  response.render('error')
+  response.render('error');
 });
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}!`);
