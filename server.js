@@ -55,12 +55,12 @@ app.use((request, response, next) => {
 
 app.use((err, request, response, next) => {
   response.locals.message = err.message;
+  console.error(err);
   const status = err.status || 500;
   response.locals.status = status;
   response.status(status);
   response.render('error')
 });
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
   console.log(`Express server listening on port ${port}!`);
 });
